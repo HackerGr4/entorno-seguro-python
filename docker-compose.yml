@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    container_name: entorno_seguro_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    networks:
+      - app-network
+
+# ¡ESTA PARTE ES LA QUE FALTABA!
+networks:
+  app-network:
+    driver: bridge
