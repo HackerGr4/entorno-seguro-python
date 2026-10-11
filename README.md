@@ -64,7 +64,4 @@ No incluye autenticación, HTTPS, servicio de red, gestión de secretos, anális
 
 `requirements.txt` está vacío porque `app.py` solo usa la biblioteca estándar de Python. Añade y fija las dependencias que necesite una aplicación real; revisa y actualiza esas versiones periódicamente.
 
-## Apoyo voluntario
-
-Esta demo es gratuita. Si te resulta útil y quieres apoyar su mantenimiento, puedes enviar un aporte voluntario a [PayPal.Me/MelwinkM](https://paypal.me/MelwinkM). Un aporte no compra acceso, soporte ni servicios.
 
