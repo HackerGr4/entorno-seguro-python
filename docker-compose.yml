@@ -1,19 +1,23 @@
 services:
   app:
     build: .
-    container_name: entorno_seguro_app
-    restart: unless-stopped
     env_file:
       - .env
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 512M
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 0.5
     networks:
       - app-network
 
-# ¡ESTA PARTE ES LA QUE FALTABA!
 networks:
   app-network:
     driver: bridge
+
