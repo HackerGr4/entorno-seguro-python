@@ -1,19 +1,19 @@
 FROM python:3.12-slim
 
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
 WORKDIR /app
 
-# Crear usuario no root por seguridad
-RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN groupadd --system --gid 10001 appuser \
+    && useradd --system --uid 10001 --gid appuser \
+       --home-dir /nonexistent --shell /usr/sbin/nologin appuser
 
-# Copiar archivos
-COPY requirements.txt .
-COPY app.py .
+COPY requirements.txt ./
+RUN python -m pip install --no-cache-dir -r requirements.txt
 
-# Instalar dependencias si el archivo no está vacío
-RUN pip install --no-cache-dir -r requirements.txt || true
+COPY --chown=10001:10001 app.py ./
 
-# Cambiar permisos al usuario
-RUN chown -R appuser:appuser /app
-USER appuser
-
+USER 10001:10001
 CMD ["python", "app.py"]
+
