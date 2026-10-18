@@ -79,9 +79,11 @@ No incluye autenticación, HTTPS, servicio de red, gestión de secretos, anális
 
 Este proyecto educativo y su documentación están disponibles sin cobro. Su objetivo es facilitar el aprendizaje de Python y de las medidas básicas de protección de un contenedor Docker.
 
-Los aportes económicos, cuando se habilite un canal verificado, serán completamente voluntarios. Su finalidad será apoyar el mantenimiento y la mejora de este material educativo. No serán necesarios para acceder al repositorio ni comprarán soporte, servicios, funciones exclusivas o compromisos de entrega. No constituyen una inversión ni ofrecen rentabilidad o ingresos garantizados.
+Si este material te resulta útil, puedes hacer un aporte económico completamente voluntario para apoyar su mantenimiento y mejora. No es necesario aportar para acceder al repositorio. Un aporte no compra soporte, servicios, funciones exclusivas o compromisos de entrega; tampoco constituye una inversión ni ofrece rentabilidad o ingresos garantizados.
 
-**Canal de aportes pendiente de verificación.** Por ahora no se publica un enlace de pago. Antes de habilitarlo se confirmarán la URL y la titularidad del destinatario con la persona responsable del proyecto.
+**[Apoyar el proyecto mediante PayPal.Me/MelwinkM](https://paypal.me/MelwinkM)**
+
+El enlace corresponde a la cuenta PayPal del responsable del proyecto. Antes de confirmar un aporte, revisa en PayPal el destinatario y el importe.
 
 También puedes apoyar sin aportar dinero: compartir el enlace del repositorio, darle una estrella o [comunicar errores y sugerencias](https://github.com/HackerGr4/entorno-seguro-python/issues). Evita publicar credenciales o datos personales en los reportes.
 
