@@ -41,7 +41,18 @@ docker compose exec app id
 docker compose exec app sh -c 'test ! -w /app && echo "Directorio de la aplicación: solo lectura"'
 ```
 
-El segundo comando debe mostrar un usuario distinto de `root`. El último comprueba que el proceso no puede escribir en `/app` mientras usa `read_only: true`. El contenedor no publica puertos en el host.
+El segundo comando debe mostrar un usuario distinto de `root`. El último comprueba que el proceso no puede escribir en `/app` mientras usa `read_only: true`. El contenedor no publica puertos en el host. La red de tipo `bridge` no lo deja sin conexión ni bloquea por sí sola las conexiones salientes.
+
+## Validación automática
+
+El flujo [Validate Python container demo](.github/workflows/validate.yml) se ejecuta en los pull requests y en los cambios enviados a `main` y `kit-seguridad-python`. Comprueba:
+
+- La sintaxis de `app.py`.
+- La configuración de Docker Compose, la construcción de la imagen y el arranque.
+- Que el proceso no use el UID `0` y que no pueda escribir en `/app`.
+- Que los registros contengan el mensaje de bienvenida del ejemplo.
+
+Estos controles verifican el funcionamiento básico de la demo. No son una auditoría de seguridad ni un análisis de vulnerabilidades. Puedes consultar los resultados de cada ejecución en [GitHub Actions](https://github.com/HackerGr4/entorno-seguro-python/actions).
 
 ## Qué protecciones demuestra
 
@@ -64,4 +75,18 @@ No incluye autenticación, HTTPS, servicio de red, gestión de secretos, anális
 
 `requirements.txt` está vacío porque `app.py` solo usa la biblioteca estándar de Python. Añade y fija las dependencias que necesite una aplicación real; revisa y actualiza esas versiones periódicamente.
 
+## Apoyo voluntario
 
+Este proyecto educativo y su documentación están disponibles sin cobro. Su objetivo es facilitar el aprendizaje de Python y de las medidas básicas de protección de un contenedor Docker.
+
+Los aportes económicos, cuando se habilite un canal verificado, serán completamente voluntarios. Su finalidad será apoyar el mantenimiento y la mejora de este material educativo. No serán necesarios para acceder al repositorio ni comprarán soporte, servicios, funciones exclusivas o compromisos de entrega. No constituyen una inversión ni ofrecen rentabilidad o ingresos garantizados.
+
+**Canal de aportes pendiente de verificación.** Por ahora no se publica un enlace de pago. Antes de habilitarlo se confirmarán la URL y la titularidad del destinatario con la persona responsable del proyecto.
+
+También puedes apoyar sin aportar dinero: compartir el enlace del repositorio, darle una estrella o [comunicar errores y sugerencias](https://github.com/HackerGr4/entorno-seguro-python/issues). Evita publicar credenciales o datos personales en los reportes.
+
+## Licencia y reutilización
+
+Este repositorio todavía no incluye un archivo `LICENSE`. Que sea público y no tenga un precio de acceso no significa que se conceda una licencia abierta para modificar, redistribuir o incorporar su contenido a otros proyectos. GitHub permite ver y hacer un fork de un repositorio público conforme a sus términos; eso no sustituye una licencia de reutilización.
+
+La persona titular debe elegir y publicar la licencia antes de ofrecer el proyecto para su reutilización general, y comprobar que tiene los derechos necesarios sobre el material incluido. Un aporte voluntario no concede derechos adicionales sobre el código. Consulta la [guía de licencias de GitHub](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
